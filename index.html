@@ -11,91 +11,107 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
-    .exo-2 {
-        font-family: 'Exo 2', sans-serif;
-    }
+      @import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap");
+      .exo-2 {
+        font-family: "Exo 2", sans-serif;
+      }
+      .round {
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+      }
     </style>
   </head>
   <body class="bg-[#090417] min-h-screen py-5">
-    
-    <section class="w-11/12 bg-[#d2cbe7] mx-auto  rounded-lg">
-      <div class="w-16 mx-auto pt-2">
-        <img src="images/sf-logo.png" alt="" class="w-16 h-16" />
-      </div>
-      <div class="mx-auto pb-5 pt-2 text-center">
-        <button class="bg-[rgb(255,255,255)] py-2 px-6 rounded-3xl">
-          <span class="text-2xl font-extrabold text-[#1b0d05]" id="taka"
-            >0.0</span
+    <main
+      class="w-11/12 bg-gradient-to-r from-green-100 via-orange-200 to-sky-100 mx-auto rounded-lg"
+    >
+      <section id="percent-section">
+        <div class="w-16 mx-auto pt-2">
+          <img src="images/sf-logo.png" alt="" class="w-16 h-16" />
+        </div>
+        <div class="mx-auto pb-5 pt-2 text-center">
+          <button class="bg-[rgb(255,255,255)] py-2 px-6 rounded-3xl">
+            <span class="text-2xl font-extrabold text-[#1b0d05]" id="taka"
+              >0.0</span
+            >
+          </button>
+        </div>
+        <div class="text-center">
+          <label
+            for="discount-input"
+            class="block text-sm pb-2 font-medium text-gray-700"
+            >Main Amount</label
           >
-        </button>
-      </div>
-      <div class="text-center">
-        <label
-          for="discount-input"
-          class="block text-sm pb-2 font-medium text-gray-700"
-          >Main Amount</label
-        >
-        <input
-          id="main-amount"
-          class="bg-[#94d3c0] p-2 rounded-xl w-8/12"
-          type="text"
-          placeholder="0"
-        />
-        <label
-          for="discount-input"
-          class="block text-sm py-2 font-medium text-gray-700"
-          >Percent (%)</label
-        >
-        <input
-          id="discount-amount"
-          class="bg-[#99becc] p-2 rounded-xl w-8/12"
-          type="text"
-          placeholder="0"
-        />
+          <input
+            id="main-amount"
+            class="bg-[#94d3c0] p-2 rounded-xl w-8/12"
+            type="text"
+            placeholder="0"
+          />
+          <label
+            for="discount-input"
+            class="block text-sm py-2 font-medium text-gray-700"
+            >Percent (%)</label
+          >
+          <input
+            id="discount-amount"
+            class="bg-[#99becc] p-2 rounded-xl w-8/12"
+            type="text"
+            placeholder="0"
+          />
 
-        <div class="container mx-auto pt-10 text-center">
-          <button
-            id="btn-click"
-            class="btn btn-warm text-2xl text-white rounded-xl bg-[#177540]"
-          >
-            Clculate
-          </button>
-        </div>
-        <div class="container mx-auto py-10 text-center">
-          <button
-            id="clear-btn"
-            class="py-1 px-2 text-xs rounded-lg text-white bg-[#646362]"
-          >
-            Try Again
-          </button>
-        </div>
-      </div>
-      <section class="bg-[#220707] py-4">
-        <div class="button-container grid grid-cols-2 gap-3  mx-4">
-            <button id="subtract-button" class="bg-yellow-500 py-1 px-4 rounded-3xl">
-              Discount
-            </button>
-            <button id="multiply-button" class="bg-blue-500 py-1 px-4 rounded-3xl">
-              Percentage
-            </button>
-            <button id="add-button" class="bg-green-500 py-1 px-4 rounded-3xl">
-              Currency
-            </button>
-            <button id="add-button" class="bg-purple-500 py-1 px-4 rounded-3xl">
-              Age
+          <div class="container mx-auto pt-10 text-center">
+            <button
+              id="btn-click"
+              class="btn btn-warm text-2xl text-white rounded-xl bg-[#177540]"
+            >
+              Clculate
             </button>
           </div>
+          <div class="container mx-auto py-10 text-center">
+            <button
+              id="clear-btn"
+              class="py-1 px-2 text-xs rounded-lg text-white bg-[#646362]"
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
       </section>
-     
-    </section>
+      <section id="button-container" class="mx-auto bg-[#afcab3] py-4 round">
+        <div class="button-container grid grid-cols-2 gap-3 mx-4">
+          <button
+            id="subtract-button"
+            class="bg-yellow-500 py-1 px-4 rounded-3xl"
+          >
+            Discount
+          </button>
+          <button
+            id="multiply-button"
+            class="bg-blue-500 py-1 px-4 rounded-3xl"
+          >
+            Percentage
+          </button>
+          <button id="add-button" class="bg-green-500 py-1 px-4 rounded-3xl">
+            Currency
+          </button>
+          <button id="add-button" class="bg-purple-500 py-1 px-4 rounded-3xl">
+            Age
+          </button>
+        </div>
+      </section>
+    </main>
     <footer>
-        <p class="text-center text-sm text-gray-400 pt-4">
-            &copy; 2025 <span class="exo-2 bg-gradient-to-r from-green-500 via-yellow-500 to-sky-600 bg-clip-text text-transparent font-bold text-gradient-to-r">SILENT FIGHTERS</span> <br> All rights reserved.
-          </p>    
+      <p class="text-center text-sm text-gray-400 pt-4">
+        &copy; 2025
+        <span
+          class="exo-2 bg-gradient-to-r from-green-500 via-yellow-500 to-sky-600 bg-clip-text text-transparent font-bold text-gradient-to-r"
+          >SILENT FIGHTERS</span
+        >
+        <br />
+        All rights reserved.
+      </p>
     </footer>
-
-   
     <script src="scripts/percent.js"></script>
   </body>
 </html>
