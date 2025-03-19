@@ -66,3 +66,20 @@
             });
         }
    
+        function resetCalculator() {
+            // সব ইনপুট ফিল্ড খুঁজে বের করে তাদের মান ফাঁকা করে দিচ্ছি
+            document.querySelectorAll("input").forEach(input => input.value = "");
+          
+            // সব সেকশন লুকিয়ে দিচ্ছি
+            document.querySelectorAll(".section").forEach(section => section.classList.add("hidden"));
+          
+            // প্রথম সেকশন (পার্সেন্ট) আবার দেখাচ্ছি
+            document.getElementById("percent").classList.remove("hidden");
+          
+            // সব বাটনের active ক্লাস রিমুভ করে দিচ্ছি
+            document.querySelectorAll(".btn-section").forEach(button => button.classList.remove("active"));
+          
+            // প্রথম বাটনকে active করে দিচ্ছি
+            document.querySelector(".btn-section").classList.add("active");
+          }
+          

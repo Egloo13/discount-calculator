@@ -1,70 +1,190 @@
 <!DOCTYPE html>
 <html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ক্যালকুলেটর</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="styles/style.css" />
     <style>
-        .hidden { display: none; }
-        .active { background-color: #4CAF50; color: white; }
+      .hidden {
+        display: none;
+      }
+      .active {
+        background-color: #29b05b;
+        color: white;
+      }
+      .radius-bottom {
+        border-radius: 0 0 8px 8px;
+      }
+      .radius-top {
+        border-radius: 8px 8px 0 0;
+      }
     </style>
-</head>
-<body class="bg-[#0d2b2c] font-sans w-11/12 mx-auto">
-<nav class="flex justify-center mt-4 py-2 bg-gradient-to-r from-green-100 via-yellow-100 to-sky-100">
-  <img src="images/sf-logo.png" alt="" class="w-16 h-16">
-</nav>
-    <div class="container mx-auto bg-gradient-to-r from-green-200 via-yellow-200 to-violet-200  p-4 ">
-        <div class="flex justify-center flex-wrap gap-4 mb-4">
-            <button class="btn-section active px-4 py-2 border rounded mr-2" onclick="showSection('percent')">পার্সেন্ট</button>
-            <button class="btn-section px-4 py-2 border rounded mr-2" onclick="showSection('discount')">ডিসকাউন্ট</button>
-            <button class="btn-section px-4 py-2 border rounded mr-2" onclick="showSection('percentage')">পার্সেন্টেজ</button>
-            <button class="btn-section px-4 py-2 border rounded" onclick="showSection('age')">বয়স</button>
-        </div>
+  </head>
+  <body class="bg-[#0d2b2c] font-sans pt-4">
+    <nav
+      class="flex justify-center w-11/12 mx-auto radius-top py-2 bg-gradient-to-r from-green-100 via-yellow-100 to-sky-100"
+    >
+      <img src="images/sf-logo.png" alt="" class="w-16 h-16" />
+    </nav>
+    <div
+      class="container w-11/12 mx-auto bg-gradient-to-r from-green-200 via-yellow-200 to-violet-200 p-4"
+    >
+      <div class="flex justify-center flex-wrap gap-4 mb-4">
+        <button
+          class="btn-section btn btn-outline btn-success active px-4 py-2 border rounded mr-2"
+          onclick="showSection('percent')"
+        >
+          পার্সেন্ট
+        </button>
+        <button
+          class="btn-section btn btn-outline btn-success hover:bg-green-500 px-4 py-2 border rounded mr-2"
+          onclick="showSection('discount')"
+        >
+          ডিসকাউন্ট
+        </button>
+        <button
+          class="btn-section btn btn-outline btn-success hover:bg-green-500 px-4 py-2 border rounded mr-2"
+          onclick="showSection('percentage')"
+        >
+          পার্সেন্টেজ
+        </button>
+        <button
+          class="btn-section btn btn-outline btn-success hover:bg-green-500 px-4 py-2 border rounded"
+          onclick="showSection('age')"
+        >
+          বয়স
+        </button>
+      </div>
 
-        <!-- Percent Section -->
-        <div id="percent" class="section w-full mx-auto">
-            <h2 class="text-xl mb-4">পার্সেন্ট ক্যালকুলেশন</h2>
-            <input type="number" id="percentAmount" placeholder="মেইন এমাউন্ট" class="input mb-2 p-2 border rounded">
-            <input type="number" id="percentValue" placeholder="পার্সেন্ট ভ্যালু" class="input mb-2 p-2 border rounded">
-            <button onclick="calculatePercent()" class="bg-blue-500 text-white 
-            px-4 py-2 rounded">ক্যালকুলেট</button>
-        </div>
+      <!-- Percent Section -->
+      <div
+        id="percent"
+        class="section w-full flex flex-col justify-center items-center"
+      >
+        <h2 class="text-xl mb-4">পার্সেন্ট ক্যালকুলেশন</h2>
+        <input
+          type="number"
+          id="percentAmount"
+          placeholder="মেইন এমাউন্ট"
+          class="input mb-2 p-2 border rounded"
+        />
+        <input
+          type="number"
+          id="percentValue"
+          placeholder="পার্সেন্ট ভ্যালু"
+          class="input mb-2 p-2 border rounded"
+        />
+        <button
+          onclick="calculatePercent()"
+          class="bg-blue-500 text-white px-4 py-2 rounded flex left-button"
+        >
+          ক্যালকুলেট
+        </button>
+      </div>
 
-        <!-- Discount Section -->
-        <div id="discount" class="section hidden">
-            <h2 class="text-xl mb-4">ডিসকাউন্ট ক্যালকুলেশন</h2>
-            <input type="number" id="discountAmount" placeholder="মেইন এমাউন্ট" class="input mb-2 p-2 border rounded">
-            <input type="number" id="discountValue" placeholder="পার্সেন্ট ভ্যালু" class="input mb-2 p-2 border rounded">
-            <button onclick="calculateDiscount()" class="bg-blue-500 text-white px-4 py-2 rounded">ক্যালকুলেট</button>
-        </div>
+      <!-- Discount Section -->
+      <div
+        id="discount"
+        class="section hidden flex flex-col justify-center items-center"
+      >
+        <h2 class="text-xl mb-4">ডিসকাউন্ট ক্যালকুলেশন</h2>
+        <input
+          type="number"
+          id="discountAmount"
+          placeholder="মেইন এমাউন্ট"
+          class="input mb-2 p-2 border rounded"
+        />
+        <input
+          type="number"
+          id="discountValue"
+          placeholder="পার্সেন্ট ভ্যালু"
+          class="input mb-2 p-2 border rounded"
+        />
+        <button
+          onclick="calculateDiscount()"
+          class="bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          ক্যালকুলেট
+        </button>
+      </div>
 
-        <!-- Percentage Section -->
-        <div id="percentage" class="section hidden">
-            <h2 class="text-xl mb-4">পার্সেন্টেজ ক্যালকুলেশন</h2>
-            <input type="number" id="percentageAmount" placeholder="পার্সেন্ট ভ্যালু" class="input mb-2 p-2 border rounded">
-            <input type="number" id="percentageTotal" placeholder="মেইন এমাউন্ট" class="input mb-2 p-2 border rounded">
-            <button onclick="calculatePercentage()" class="bg-blue-500 text-white px-4 py-2 rounded">ক্যালকুলেট</button>
-        </div>
+      <!-- Percentage Section -->
+      <div
+        id="percentage"
+        class="section hidden flex flex-col justify-center items-center"
+      >
+        <h2 class="text-xl mb-4">পার্সেন্টেজ ক্যালকুলেশন</h2>
+        <input
+          type="number"
+          id="percentageAmount"
+          placeholder="পার্সেন্ট ভ্যালু"
+          class="input mb-2 p-2 border rounded"
+        />
+        <input
+          type="number"
+          id="percentageTotal"
+          placeholder="মেইন এমাউন্ট"
+          class="input mb-2 p-2 border rounded"
+        />
+        <button
+          onclick="calculatePercentage()"
+          class="bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          ক্যালকুলেট
+        </button>
+      </div>
 
-        
-       
-
-        <!-- Age Calculation Section -->
-        <div id="age" class="section hidden">
-            <h2 class="text-xl mb-4">বয়স ক্যালকুলেশন</h2>
-            <input type="date" id="birthdate" class="input mb-2 p-2 border rounded">
-            <button onclick="calculateAge()" class="bg-blue-500 text-white px-4 py-2 rounded">ক্যালকুলেট</button>
-        </div>
+      <!-- Age Calculation Section -->
+      <div
+        id="age"
+        class="section hidden flex flex-col justify-center items-center"
+      >
+        <h2 class="text-xl mb-4">বয়স ক্যালকুলেশন</h2>
+        <input
+          type="date"
+          id="birthdate"
+          class="input mb-2 p-2 border rounded"
+        />
+        <button
+          onclick="calculateAge()"
+          class="bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          ক্যালকুলেট
+        </button>
+      </div>
+      <div class="flex justify-center mt-4">
+        <button onclick="resetCalculator()" class="bg-red-500 text-white px-4 py-2 rounded">
+          রিফ্রেশ
+        </button>
+      </div>
+      
     </div>
 
     <footer class="my-8">
-        <p class="text-center text-gray-600">Powered by <a href="https://www.facebook.com/share/18d4iomDDV/" target="_blank"><span class="exo-2 bg-gradient-to-r from-green-500 via-yellow-500 to-red-600 bg-clip-text text-transparent font-bold text-gradient-to-r">SILENT FIGHTERS</span></a></p>
-        <p class="text-center text-gray-600">Copyright &copy; 2025 All rights reserved.</p>
+      <p class="text-center text-gray-600">
+        Powered by
+        <a href="https://www.facebook.com/share/18d4iomDDV/" target="_blank"
+          ><span
+            class="exo-2 bg-gradient-to-r from-green-500 via-yellow-500 to-red-600 bg-clip-text text-transparent font-bold text-gradient-to-r"
+            >SILENT FIGHTERS</span
+          ></a
+        >
+      </p>
+      <p class="text-center text-gray-600 pb-8">
+        Copyright &copy; 2025 All rights reserved.
+      </p>
     </footer>
 
     <script src="scripts/percent.js"></script>
-
-</body>
+    
+      
+  </body>
 </html>
